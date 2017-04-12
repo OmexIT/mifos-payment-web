@@ -1,3 +1,52 @@
-<h1>
-  {{title}}
-</h1>
+<section [hidden] = "!isLoggedin()">
+  <nav class="navbar navbar-toggleable-md navbar-light fixed-top bg-faded">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" [routerLink]="['/home']"><strong>Mifos</strong> Payment Bridge</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['/home']"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/payments']"><i class="fa fa-money" aria-hidden="true"></i> Payments</a>
+          </li>
+          <li class="nav-item btn-group">
+            <a class="dropdown-toggle nav-link" id="dropdownMenu1" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;Settings
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <a class="dropdown-item" [routerLink]="['/channels']"><i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;Channels</a>
+              <a class="dropdown-item" [routerLink]="['/users']"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Users</a>
+              <a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;System Configuration</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav float-left">
+          <li class="nav-item btn-group">
+            <a class="dropdown-toggle nav-link" id="userDropdown" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{userName}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <a class="dropdown-item" [routerLink]="['/login']"
+                 (click)="performLogout()">
+                <i class="fa fa-unlock" aria-hidden="true"></i>&nbsp;Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</section>
+
+<router-outlet></router-outlet>
+
+

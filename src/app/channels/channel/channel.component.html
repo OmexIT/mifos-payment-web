@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 [hidden]="isNew">{{pageTitle +': '+ channel.channel_name}}</h1>
+      <h1 [hidden]="!isNew">{{pageTitle}}</h1>
+
+      <div class="col-12 p-3">
+        <form (submit)="createChannel()" novalidate>
+          <div class="form-group row">
+            <label for="channelName" class="col-2 col-form-label">Channel Name:</label>
+            <div class="col-6">
+              <input type="text" class="form-control" id="channelName" name="channelName"
+                     [(ngModel)]="channel.channel_name"
+                     placeholder="Enter channel name"
+                     #channelName="ngModel" required>
+
+              <div [hidden]="channelName.valid || channelName.pristine"
+                   class="alert alert-danger">
+                Channel name is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="channelType" class="col-2 col-form-label">Channel Type:</label>
+            <div class="col-6">
+              <select class="form-control" id="channelType" name="channelType"
+                      [(ngModel)]="channel.channel_type"
+                      #channelType="ngModel" required>
+                <option [value]="''" disabled>-- Select channel type --</option>
+                <option [value]="1">Mobile Money Channel</option>
+                <option [value]="2">Bank Channel</option>
+                <option [value]="3">Email Channel</option>
+              </select>
+              <div [hidden]="channelType.valid || channelType.pristine"
+                   class="alert alert-danger">
+                Channel type is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="channelEndpointTag" class="col-2 col-form-label">Channel Endpoint Tag:</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="channelEndpointTag" name="channelEndpointTag"
+                     [(ngModel)]="channel.channel_endpoint_tag"
+                     placeholder="Channel endpoint tag"
+                     #channelEndpointTag="ngModel" required>
+              <div [hidden]="channelEndpointTag.valid || channelEndpointTag.pristine"
+                   class="alert alert-danger">
+                Tag name is required
+              </div>
+            </div>
+          </div>
+          <section *ngIf="channel.channel_type==1">
+            <div class="form-group row">
+              <label for="phoneNumberDefaultRegion" class="col-2 col-form-label">Number Default Region:</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="phoneNumberDefaultRegion" name="phoneNumberDefaultRegion"
+                       [(ngModel)]="channel.phone_number_default_region"
+                       placeholder="Number default region"
+                       #phoneNumberDefaultRegion="ngModel" required>
+                <div [hidden]="phoneNumberDefaultRegion.valid || phoneNumberDefaultRegion.pristine"
+                     class="alert alert-danger">
+                  Number default region is required
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="form-group row">
+            <div class="offset-2 col-6">
+              <label>
+                <input type="checkbox" id="isCallback" name="isCallback"
+                       [(ngModel)]="channel.is_callback" required> Is callback?
+              </label>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="offset-2 col-6">
+              <label>
+                <input type="checkbox" id="isActive" name="isActive"
+                       [(ngModel)]="channel.is_active"> Is active?
+              </label>
+            </div>
+          </div>
+          <section [hidden]="isNew">
+            <div class="form-group row">
+              <label for="dateCreated" class="col-2 col-form-label">Date Created:</label>
+              <div class="col-sm-6">
+                <input type="url" class="form-control" id="dateCreated" name="dateCreated"
+                       [(ngModel)]="channel.date_created" [disabled]="true"
+                       placeholder="Channel endpoint">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="lastModified" class="col-2 col-form-label">Last Modified:</label>
+              <div class="col-sm-6">
+                <input type="url" class="form-control" id="lastModified" name="lastModified"
+                       [(ngModel)]="channel.last_modified" [disabled]="true"
+                       placeholder="Channel endpoint">
+              </div>
+            </div>
+          </section>
+          <div class="form-group ">
+            <div class="offset-2 col-sm-6">
+              <div class="pull-right">
+                <button type="button" class="btn btn-danger" (click)="navigateToChannels()">
+                  <i class="fa fa-close"></i>&nbsp;Cancel
+                </button>
+                <button type="submit" class="btn btn-success">
+                  <i class="fa fa-save"></i>&nbsp;{{isNew ? 'Save Channel': 'Update Channel'}}
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

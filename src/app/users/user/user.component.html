@@ -1,0 +1,154 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 [hidden]="isNew">{{pageTitle +': '+ user.user_name}}</h1>
+      <h1 [hidden]="!isNew">{{pageTitle}}</h1>
+
+      <div class="col-12 p-3">
+        <form  novalidate>
+          <div class="form-group row">
+            <label for="designation" class="col-2 col-form-label">Designation:</label>
+            <div class="col-6">
+              <input type="text" class="form-control" id="username" name="username"
+                     [(ngModel)]="user.user_name"
+                     placeholder="Enter last name"
+                     #username="ngModel" required>
+
+              <div [hidden]="username.valid || username.pristine"
+                   class="alert alert-danger">
+                Username is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="idType" class="col-2 col-form-label">ID Type:</label>
+            <div class="col-6">
+              <select class="form-control" id="idType" name="idType"
+                      [(ngModel)]="user.id_type"
+                      #idType="ngModel" required>
+                <option [value]="''" disabled>-- Select ID type --</option>
+                <option [value]="1">National Id</option>
+                <option [value]="2">Passport Number</option>
+              </select>
+              <div [hidden]="idType.valid || idType.pristine"
+                   class="alert alert-danger">
+                ID type is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="lastName" class="col-2 col-form-label">ID Number:</label>
+            <div class="col-6">
+              <input type="text" class="form-control" id="idNumber" name="idNumber"
+                     [(ngModel)]="user.id_number"
+                     placeholder="Enter ID number"
+                     #idNumber="ngModel" required>
+
+              <div [hidden]="firstName.valid || firstName.pristine"
+                   class="alert alert-danger">
+                ID number is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="firstName" class="col-2 col-form-label">First Name:</label>
+            <div class="col-6">
+              <input type="text" class="form-control" id="firstName" name="firstName"
+                     [(ngModel)]="user.first_name"
+                     placeholder="Enter first name"
+                     #firstName="ngModel" required>
+
+              <div [hidden]="firstName.valid || firstName.pristine"
+                   class="alert alert-danger">
+                First name is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="middleName" class="col-2 col-form-label">Middle Name:</label>
+            <div class="col-6">
+              <input type="text" class="form-control" id="middleName" name="middleName"
+                     [(ngModel)]="user.middle_name"
+                     placeholder="Enter middle name"
+                     #middleName="ngModel" >
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="lastName" class="col-2 col-form-label">Last Name:</label>
+            <div class="col-6">
+              <input type="text" class="form-control" id="lastName" name="lastName"
+                     [(ngModel)]="user.last_name"
+                     placeholder="Enter last name"
+                     #lastName="ngModel" required>
+
+              <div [hidden]="lastName.valid || lastName.pristine"
+                   class="alert alert-danger">
+                Last name is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="email" class="col-2 col-form-label">Email:</label>
+            <div class="col-6">
+              <input type="text" class="form-control" id="email" name="email"
+                     [(ngModel)]="user.email"
+                     placeholder="Enter email"
+                     #email="ngModel">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="designation" class="col-2 col-form-label">Designation:</label>
+            <div class="col-6">
+              <input type="text" class="form-control" id="designation" name="designation"
+                     [(ngModel)]="user.designation"
+                     placeholder="Enter last name"
+                     #designation="ngModel">
+            </div>
+          </div>
+          <section [hidden]="!isNew">
+            <div class="form-group row">
+              <label for="password" class="col-2 col-form-label">Last Name:</label>
+              <div class="col-6">
+                <input type="password" class="form-control" id="password" name="password"
+                       [(ngModel)]="user.password"
+                       placeholder="Enter password"
+                       #password="ngModel" required>
+
+                <div [hidden]="password.valid || password.pristine"
+                     class="alert alert-danger">
+                  Password is required
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="repeatPassword" class="col-2 col-form-label">Last Name:</label>
+              <div class="col-6">
+                <input type="text" class="form-control" id="repeatPassword" name="repeatPassword"
+                       [(ngModel)]="repeat_password"
+                       placeholder="Repeat password"
+                       #repeatPassword="ngModel" required>
+
+                <div [hidden]="repeatPassword.valid || repeatPassword.pristine"
+                     class="alert alert-danger">
+                  Repeat password
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="form-group ">
+            <div class="offset-2 col-sm-6">
+              <div class="pull-right">
+                <button type="button" class="btn btn-danger" [routerLink]="['/channels']">
+                  <i class="fa fa-close"></i>&nbsp;Cancel
+                </button>
+                <button type="submit" class="btn btn-success">
+                  <i class="fa fa-save"></i>&nbsp;{{isNew ? 'Save User': 'Update User'}}
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

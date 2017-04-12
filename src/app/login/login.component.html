@@ -1,0 +1,28 @@
+<script src="login.component.ts"></script>
+<div class="body-wrapper">
+  <div class="container">
+
+    <form (submit)="performLogin()" class="form-signin" novalidate>
+      <h1 class="form-signin-heading">Please Sign In</h1>
+      <label for="username" class="sr-only">Username</label>
+      <input type="text" id="username" class="form-control" placeholder="Enter username"
+             [(ngModel)]="loginFormData.username" name="username"
+             #username="ngModel" required autofocus>
+      <div [hidden]="username.valid || username.pristine"
+           class="alert alert-danger">
+        Username is required
+      </div>
+      <label for="password" class="sr-only">Password</label>
+      <input type="password" id="password" class="form-control mt-2" placeholder="Enter password"
+             [(ngModel)]="loginFormData.password" name="password"
+             #password="ngModel" required>
+      <div [hidden]="password.valid || password.pristine"
+           class="alert alert-danger">
+        Password is required
+      </div>
+      <button class="btn btn-primary float-right mt-2" type="submit">
+        Sign in
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+        <h1>Channel Details</h1>
+        <div class="row">
+          <div class="col-md-3 mb-2">
+            <a [routerLink]="['/channel']" class="btn btn-sm btn-primary">
+              <i class="fa fa-plus"></i>
+              &nbsp;Add New Channel
+            </a>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover table-bordered">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Channel Name</th>
+              <th>Payment Type</th>
+              <th>Channel Endpoint</th>
+              <th>Is callback?</th>
+              <th>Is active?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let channel of channels">
+              <td>{{channel.id}}</td>
+              <td>
+                <a [routerLink]="['/channel', channel.id]">{{channel.channel_name}}</a>
+              </td>
+              <td>{{channel.channel_type}}</td>
+              <td>{{channel.channel_endpoint_tag}}</td>
+              <td class=""><input type="checkbox" [checked]="channel.callback" [disabled]="true"></td>
+              <td><input type="checkbox" [checked]="channel.active" [disabled]="true"></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>
