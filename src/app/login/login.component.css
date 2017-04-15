@@ -39,3 +39,15 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.loginDialog {
+  border: 1px solid #1c1c1c;
+  width: 40%;
+  padding: 60px;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.btn-primary {
+  border-radius: 25px;
+  background-color: #4885ed;
+}

@@ -1,8 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 /* Show it is fixed to the top */
+@font-face {
+  font-family: 'Roboto-Light';
+  src: local('?'),
+  url('libs/fonts/Roboto/Roboto-Light.ttf') format('truetype');
+  font-weight: light;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Thin';
+  src: local('?'),
+  url('libs/fonts/Roboto/Roboto-Thin.ttf') format('truetype');
+  font-weight: thin;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: local('?'),
+  url('libs/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+  font-weight: thin;
+  font-style: normal;
+}
+
+.robotoReg{
+  font-family: 'Roboto-Regular';
+}
+
+.robotoLight{
+  font-family: 'Roboto-Light';
+}
+
+.robotoThin{
+  font-family: 'Roboto-Thin';
+}
+
 body {
   min-height: 75rem;
   padding-top: 4.5rem;
+  font-family: 'Roboto-Regular';
 }
 
 h1 {
